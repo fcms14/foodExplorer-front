@@ -6,6 +6,7 @@ import { Button } from "../../components/Button";
 import { useState } from "react";
 import { useNavigate } from 'react-router-dom'
 import { api } from "../../services/api"
+import { Link } from 'react-router-dom'
 
 export function SignUp() {
     const [name, setName] = useState("");
@@ -41,23 +42,23 @@ export function SignUp() {
 
                 Crie sua conta
 
-                <Input 
+                <Input
                     title="Seu nome"
-                    placeHolder="Digite Aqui seu Nome" 
+                    placeHolder="Digite Aqui seu Nome"
                     type="text"
                     onChange={e => setName(e.target.value)}
 
                 />
-                <Input 
+                <Input
                     title="E-mail"
-                    placeHolder="Digite Aqui seu Nome" 
+                    placeHolder="Digite Aqui seu Nome"
                     type="text"
                     onChange={e => setEmail(e.target.value)}
 
                 />
-                <Input 
-                    title="Senha" 
-                    placeHolder="No mínimo 6 carácteres" 
+                <Input
+                    title="Senha"
+                    placeHolder="No mínimo 6 carácteres"
                     type="password"
                     onChange={e => setPassword(e.target.value)}
 
@@ -65,7 +66,9 @@ export function SignUp() {
 
                 <Button title="Criar Conta" onClick={handleSignUp} />
 
-                <a href="/">Já tenho uma conta </a>
+                <Link to='/'>
+                    Já tenho uma conta 
+                </Link>
 
             </Container>
         </Hero>

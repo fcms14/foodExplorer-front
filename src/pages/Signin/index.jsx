@@ -5,6 +5,7 @@ import { Container, Hero } from "./styles";
 import { Logo } from "../../components/Logo";
 import { Input } from "../../components/Input";
 import { Button } from "../../components/Button";
+import { Link } from 'react-router-dom'
 
 
 export function Signin() {
@@ -39,7 +40,9 @@ export function Signin() {
 
                 <Button title="Entrar" onClick={handleSignIn} />
 
-                <a href="/signup">Crie sua conta </a>
+                <Link to='/signup'>
+                    Crie sua conta
+                </Link>
 
             </Container>
         </Hero>
