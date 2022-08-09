@@ -3,13 +3,15 @@ import styled from 'styled-components'
 
 export const Container = styled.div`
     width: clamp(280px, 100%, 320px);
+    min-height: 510px;
     background-color: ${({ theme }) => theme.COLORS.BACKGROUND_0a};
 
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: space-between;
     gap: 16px;
-
+    
     border: none;    
     border-radius: 10px;
 
