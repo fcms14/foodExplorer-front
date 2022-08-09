@@ -2,7 +2,7 @@
 	Rocketseat's Explorer Repository - Final Challenge
 </h1>
 <h2 align="center">
-	<a href="https://grand-salmiakki-450c23.netlify.app/"> Final Challenge - Food Explorer </a>
+	<a href="https://62f2bb589f654d0ea7520dfb--silver-lollipop-47c35e.netlify.app/"> Final Challenge - Food Explorer </a>
 </h2>
 
 <p align="center">
