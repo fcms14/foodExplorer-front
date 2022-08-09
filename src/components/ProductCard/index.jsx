@@ -33,15 +33,6 @@ export function ProductCard({ data, isEqual, isFavorited, ...rest }) {
         setFavorited(!favorited);
     }
 
-    useEffect(() => {
-        async function checkQuantity() {
-            if (quantity < 0) {
-                setQuantity(0)
-            }
-        }
-        checkQuantity();
-    }, [quantity]);
-
     function addToCart() {
         let itens = JSON.parse(localStorage.getItem(`@foodExplorer:cart${user.id}`)) || [];
         itens = itens.filter(l => data.id !== l.product_id);
@@ -106,7 +97,7 @@ export function ProductCard({ data, isEqual, isFavorited, ...rest }) {
                 <> </>
                 :
                 <section>
-                    <FiMinus onClick={() => setQuantity(--quantity)} />
+                    <FiMinus onClick={() => setQuantity(quantity <= 0 ? 0 : --quantity )} />
                     {quantity}
 
                     <FiPlus onClick={() => setQuantity(++quantity)} />

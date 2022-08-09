@@ -36,7 +36,7 @@ export function Products() {
             setFavorites(productsFavoriteds);
         }
         fetchProducts();
-    }, []);
+    }, [favorites]);
 
     let filteredProducts = showFavs ? products.filter(product => (favorites.includes(product.id))) : products;
     filteredProducts = search.length > 0 ? products.filter(product => product.name.toLowerCase().includes(search.toLowerCase())) : filteredProducts;
