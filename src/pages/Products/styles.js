@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled from 'styled-components';
 
 export const Hero = styled.div`
     margin: 0 auto;
@@ -26,7 +26,6 @@ export const Hero = styled.div`
             text-align: center;
         }
     }
-
 `;
 
 export const Banner = styled.section`
@@ -62,8 +61,6 @@ export const Banner = styled.section`
             font-weight: 500;
         }
     }
-    
-    
 
     @media only screen and (max-width: 780px) {
         flex-wrap: wrap;
@@ -74,8 +71,7 @@ export const Banner = styled.section`
             max-width: 320px;
         }
     }
-
-`
+`;
 
 export const Section2Columns = styled.section`
     display: flex;
@@ -91,8 +87,7 @@ export const Section2Columns = styled.section`
     @media only screen and (max-width: 780px) {
         flex-wrap: wrap;
     }
-
-`
+`;
 
 export const Section = styled.section`
     width: 100%;
@@ -102,15 +97,13 @@ export const Section = styled.section`
     display: flex;
     flex-wrap: wrap ;
     gap: 10px;
-
-`
+`;
 
 export const Column2 = styled.div`
     min-width: 180px;
     color: ${({ theme }) => theme.COLORS.GRAY_C4};
     width: 25%;
-`
-
+`;
 
 export const Avatar = styled.div`
     display: flex;
@@ -124,17 +117,7 @@ export const Avatar = styled.div`
     min-width: 180px;
     margin-top: 8px;
 
-    /* position: relative; */
-    /* margin: -124px auto 32px; */
-    
-    /* > img {
-        width: 186px;
-        height: 186px;
-        border-radius: 50%;
-    } */
-
     > label {
-        /* border: 1px solid red; */
         width: 48px;
         height: 48px;
 
@@ -144,10 +127,6 @@ export const Avatar = styled.div`
         display: flex;
         align-items: center;
         justify-content: center;
-
-        /* position: absolute; */
-        /* bottom: 7px; */
-        /* right: 7px; */
 
         cursor: pointer;
 
@@ -162,5 +141,4 @@ export const Avatar = styled.div`
             color: ${({ theme }) => theme.COLORS.BACKGROUND_800};            
         }
     }
-
 `;

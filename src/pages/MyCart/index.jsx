@@ -1,22 +1,16 @@
 import { useState, useEffect } from 'react';
-import { useAuth } from '../../hooks/auth'
-import { useNavigate } from 'react-router-dom';
+import { useAuth } from '../../hooks/auth';
 import { api } from '../../services/api';
 import { Link } from 'react-router-dom';
 
-import { FiArrowLeft, FiSearch, FiMail, FiTrash, FiX } from 'react-icons/fi'
+import { FiArrowLeft, FiSearch } from 'react-icons/fi';
 import { Hero, Billing, CartItens, Checkout, Section2Columns } from "./styles";
 import { Header } from "../../components/Header";
 import { Favorites, Search } from '../../components/Header/styles';
 import { Input } from "../../components/Input";
-import { Ingredients } from "../../components/Ingredients";
-import { Textarea } from "../../components/Textarea";
 import { Button } from "../../components/Button";
-import { ProductCard } from '../../components/ProductCard';
-import macaroons from '../../assets/pngegg1.png';
 
 import qrCode from '../../assets/qrCode.png';
-
 
 export function MyCart() {
     const { user } = useAuth();
@@ -65,7 +59,6 @@ export function MyCart() {
     }
 
     async function handleNewOrder(){
-
         const data = {
             cart,
             paymentMethod,
@@ -73,6 +66,10 @@ export function MyCart() {
             paid
         }
 
+        if (data.cart.length === 0) {
+            return;
+        }
+        
         const { data: order_id } = await api.post("/orders", data);
 
         alert("Pedido Enviado Com sucesso!");
@@ -82,15 +79,12 @@ export function MyCart() {
         
         localStorage.setItem(`@foodExplorer:order${user.id}`, JSON.stringify(order_id));
         setAproved(JSON.parse(localStorage.getItem(`@foodExplorer:order${user.id}`)));
-
-        console.log("Aprovado", aproved);
     }
 
     if (status == "Entregue") {
         localStorage.removeItem(`@foodExplorer:order${user.id}`);
         localStorage.removeItem(`@foodExplorer:cart${user.id}`);
     }
-
 
     return (
         <>
@@ -200,6 +194,5 @@ export function MyCart() {
                 </div>
             </Hero>
         </>
-
     )
 }

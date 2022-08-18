@@ -7,11 +7,6 @@ export default createGlobalStyle`
         box-sizing: border-box;
     }
 
-    /* html, #root, body{
-        min-height: 100%;
-        height: 100%;
-    } */
-
     body {
         background-color: ${({ theme }) => theme.COLORS.BACKGROUND_0F};
         color: ${({ theme }) => theme.COLORS.WHITE_FF};

@@ -1,11 +1,11 @@
-import { useState, useEffect } from "react";
-import { useAuth } from '../../../hooks/auth'
+import { useState } from "react";
+import { useAuth } from '../../../hooks/auth';
 import { useNavigate } from 'react-router-dom';
 import { useParams } from "react-router-dom";
 import { api } from '../../../services/api';
 import { Link } from 'react-router-dom';
 
-import { FiArrowLeft, FiUser, FiMail, FiLock, FiCamera } from 'react-icons/fi'
+import { FiArrowLeft, FiCamera } from 'react-icons/fi';
 import { Hero, Section, Section2Columns, Column2, Avatar } from "./styles";
 import { Header } from "../../../components/Header";
 import { Input } from "../../../components/Input";
@@ -38,12 +38,12 @@ export function CreateProduct() {
     async function fetchProducts() {
         const resp = await api.get(`/products/id/${id}`)
         setProduct(resp.data);
-        for(let ingredient of resp.data.ingredients){
+        for (let ingredient of resp.data.ingredients) {
             setTags(prevState => prevState.filter(tag => tag !== ingredient.name));
             setTags(prevState => [...prevState, ingredient.name]);
         };
     }
-    if(id && product.length == 0){
+    if (id && product.length == 0) {
         fetchProducts();
     }
 
@@ -88,12 +88,10 @@ export function CreateProduct() {
 
 
         if (avatarFile) {
-            console.log(product_id);
             const fileUploadForm = new FormData();
             fileUploadForm.append("avatar", avatarFile);
             fileUploadForm.append("product_id", product_id);
-
-            const res = await api.patch("/products", fileUploadForm);
+            await api.patch("/products", fileUploadForm);
         }
 
         alert("Produto Cadastrado com sucesso!");
@@ -101,7 +99,11 @@ export function CreateProduct() {
     }
 
     async function handleUpdateProduct() {
-        const { data: product_id } = await api.post(`/products/update/`, {
+        if (newTag) {
+            return alert("Há um Marcador pendente para adicionar")
+        }
+
+        await api.post(`/products/update/`, {
             name,
             description,
             price,
@@ -110,17 +112,12 @@ export function CreateProduct() {
             id
         });
 
-        if (newTag) {
-            return alert("Há um Marcador pendente para adicionar")
-        }
-
-
         if (avatarFile) {
             const fileUploadForm = new FormData();
             fileUploadForm.append("avatar", avatarFile);
             fileUploadForm.append("product_id", id);
 
-            const res = await api.patch("/products", fileUploadForm);
+            await api.patch("/products", fileUploadForm);
         }
 
         alert("Produto Atualizado");
@@ -131,8 +128,9 @@ export function CreateProduct() {
         <>
             <Header />
             <Hero>
+
                 <Link to='/'>
-                <FiArrowLeft />
+                    <FiArrowLeft />
                 </Link>
 
                 <h1>
@@ -141,19 +139,8 @@ export function CreateProduct() {
 
                 <Section2Columns>
                     <Column2>
-                        {/* <Input
-                            title="Imagem do Prato"
-                            placeHolder="Selecione a Imagem"
-                            type="file"
-                        /> */}
-
                         Imagem do Produto
                         <Avatar>
-                            {/* <img
-                                // src={avatar}
-                                alt="Selecione Imagem"
-                            /> */}
-
                             <label htmlFor='avatar'>
                                 <FiCamera />
                                 <input
@@ -169,7 +156,7 @@ export function CreateProduct() {
 
                     <Input
                         title="Nome do Produto"
-                        placeHolder={ product.name ?? "Ex: X-Tudo" } 
+                        placeHolder={product.name ?? "Ex: X-Tudo"}
                         type="text"
                         onChange={e => setName(e.target.value)}
                     />
@@ -195,7 +182,7 @@ export function CreateProduct() {
 
                     <Ingredients
                         isNew
-                        placeholder="Novo Marcador"
+                        placeholder="Novo Ingrediente"
                         onChange={e => setNewTag(e.target.value)}
                         value={newTag}
                         onClick={handleAddTag}
@@ -211,7 +198,7 @@ export function CreateProduct() {
                 <Section2Columns>
                     <Input
                         title="Preço"
-                        placeHolder={product.price ?? "R$ 0,00" }
+                        placeHolder={product.price ?? "R$ 0,00"}
                         type="number"
                         onChange={e => setPrice(e.target.value)}
                     />
@@ -225,10 +212,7 @@ export function CreateProduct() {
                     </Column2>
                 </Section2Columns>
 
-
-
             </Hero>
         </>
-
     )
 }

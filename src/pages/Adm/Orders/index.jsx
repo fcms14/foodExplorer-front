@@ -1,12 +1,11 @@
 import { useState, useEffect } from 'react';
-import { useAuth } from '../../../hooks/auth'
+import { useAuth } from '../../../hooks/auth';
 import { api } from '../../../services/api';
 import { Link } from 'react-router-dom';
 
-import { FiArrowLeft } from 'react-icons/fi'
+import { FiArrowLeft } from 'react-icons/fi';
 import { Hero } from "./styles";
 import { Header } from "../../../components/Header";
-
 
 export function Orders() {
     const { user } = useAuth();
@@ -22,17 +21,13 @@ export function Orders() {
     }, [search]);
 
     async function handleStatus(orderId, event){
-
         const data = {
             orderId,
             status: event.target.value
         }
-
         event.target.className = event.target.value;
-
-        console.log(await api.put("/orders", data));
+        await api.put("/orders", data);
     }
-
 
     return (
         <>
@@ -89,6 +84,5 @@ export function Orders() {
 
             </Hero>
         </>
-
     )
 }

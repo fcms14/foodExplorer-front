@@ -102,6 +102,5 @@ export const Logo = styled.div`
 
     img {
         width: 24px;
-    }
-    
+    }    
 `;

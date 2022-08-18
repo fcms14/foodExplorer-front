@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled from 'styled-components';
 
 export const Container = styled.textarea`
     width: 100%;
@@ -27,4 +27,4 @@ export const Label = styled.label`
     font-weight: 400;
     
     width: 100%;
-`
+`;

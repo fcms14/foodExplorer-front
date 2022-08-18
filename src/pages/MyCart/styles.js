@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled from 'styled-components';
 
 export const Hero = styled.div`
     margin: 0 auto;
@@ -30,7 +30,6 @@ export const Hero = styled.div`
             justify-content: space-around;
         }
     }
-
 `;
 
 export const Billing = styled.div`
@@ -45,7 +44,6 @@ export const Billing = styled.div`
     color: ${({ theme }) => theme.COLORS.GRAY_E1};
     font-weight: 500;
 `;
-
 
 export const Checkout = styled.div`
     width: clamp(280px, 100%, 480px);
@@ -98,7 +96,7 @@ export const Checkout = styled.div`
     .displayBackground{
         background-color: ${({ theme }) => theme.COLORS.BACKGROUND_1B};
     }
-`
+`;
 
 export const CartItens = styled.div`
     display: flex;
@@ -134,11 +132,8 @@ export const CartItens = styled.div`
             font-weight: 400;
             cursor: pointer;
         }
-
     }
 `;
-
-
 
 export const Section2Columns = styled.section`
     display: flex;
@@ -153,5 +148,4 @@ export const Section2Columns = styled.section`
     @media only screen and (max-width: 780px) {
         flex-wrap: wrap;
     }
-
 `;

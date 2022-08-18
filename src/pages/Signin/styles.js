@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled from 'styled-components';
 
 export const Hero = styled.div`
     margin: 0 auto;
@@ -15,7 +15,6 @@ export const Hero = styled.div`
 
     gap: 20px;
 `;
-
 
 export const Container = styled.div`
     width: clamp(300px, 80vw, 480px);
@@ -40,4 +39,3 @@ export const Container = styled.div`
         font-size: 14px;
     }
 `;
-

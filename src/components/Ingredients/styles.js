@@ -5,7 +5,7 @@ export const Container = styled.div`
     align-items: center;
 
     background-color: ${({ theme, isNew }) => isNew ? "transparent" : theme.COLORS.GRAY_7C};
-    color: ${({ theme, isNew }) => theme.COLORS.WHITE_FF};
+    color: ${({ theme }) => theme.COLORS.WHITE_FF};
 
     border: ${({ theme, isNew }) => isNew ? `1px dashed ${theme.COLORS.GRAY_7C}` : "none"} ;
 
@@ -14,7 +14,6 @@ export const Container = styled.div`
 
     width: 19%;
     min-width: 220px;
-
     
     > input {
         height: 56px;
@@ -30,8 +29,8 @@ export const Container = styled.div`
         &::placeholder{
             color: ${({ theme, isNew }) => theme.COLORS.GRAY_7C};
         }
-
     }
+    
     > button {        
         border: none;
         background: none;
@@ -44,5 +43,4 @@ export const Container = styled.div`
     .button-add {
         color: ${({ theme, isNew }) => theme.COLORS.GRAY_7C};
     }
-
 `;

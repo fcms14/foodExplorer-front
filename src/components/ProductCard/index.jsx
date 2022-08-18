@@ -1,23 +1,21 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { useAuth } from '../../hooks/auth';
 import { useNavigate } from 'react-router-dom';
 import { api } from '../../services/api';
-// import { useHistory } from 'react-router'
-import { FiPlus, FiMinus, FiHeart, FiStar, FiClock, FiTrash2 } from 'react-icons/fi'
+import { FiPlus, FiMinus, FiHeart, FiTrash2 } from 'react-icons/fi';
 import { Container } from "./styles";
-import { ProductTag } from '../ProductTag'
+import { ProductTag } from '../ProductTag';
 import avatarPlaceHolder from '../../assets/avatar_placeholder.svg';
 import { Button } from '../Button';
-import { Input } from '../Input';
-import { Link } from 'react-router-dom';
 
-export function ProductCard({ data, isEqual, isFavorited, ...rest }) {
+export function ProductCard({ data, isEqual, isFavorited }) {
     const { user, admin } = useAuth();
-    const avatarUrl = data.picture ? `${api.defaults.baseURL}/files/${data.picture}` : avatarPlaceHolder;
     const navigate = useNavigate();
+    const avatarUrl = data.picture ? `${api.defaults.baseURL}/files/${data.picture}` : avatarPlaceHolder;
+    const pendingOrder = JSON.parse(localStorage.getItem(`@foodExplorer:order${user.id}`)) || [];
+
     let [quantity, setQuantity] = useState(1);
     let [favorited, setFavorited] = useState(isFavorited);
-    const pendingOrder = JSON.parse(localStorage.getItem(`@foodExplorer:order${user.id}`)) || [];
 
     async function handleRemove() {
         const confirm = window.confirm("Deseja realmente excluir este filme?");
@@ -41,7 +39,7 @@ export function ProductCard({ data, isEqual, isFavorited, ...rest }) {
             itens = itens.filter(l => data.id !== l.product_id);
             localStorage.setItem(`@foodExplorer:cart${user.id}`, JSON.stringify(itens));
             cart.innerHTML = `Meu Pedido (${itens.length})`;
-            return
+            return;
         }
 
         const item = {
@@ -97,16 +95,15 @@ export function ProductCard({ data, isEqual, isFavorited, ...rest }) {
                 <> </>
                 :
                 <section>
-                    <FiMinus onClick={() => setQuantity(quantity <= 0 ? 0 : --quantity )} />
+                    <FiMinus onClick={() => setQuantity(quantity <= 0 ? 0 : --quantity)} />
                     {quantity}
 
                     <FiPlus onClick={() => setQuantity(++quantity)} />
 
-                    { pendingOrder.length != 0 ? <> </>: <Button title="Incluir" onClick={addToCart} /> }
-                    
+                    {pendingOrder.length != 0 ? <> </> : <Button title="Incluir" onClick={addToCart} />}
+
                 </section>
             }
-
         </Container>
     )
 }

@@ -1,5 +1,4 @@
 import { createContext, useContext, useState, useEffect } from "react";
-
 import { api } from '../services/api';
 
 export const AuthContext = createContext({});
@@ -76,7 +75,7 @@ function AuthProvider({ children }) {
             const res = await api.post("/sessions/isAdmin", { email: userJson.email, password: userJson.password })
             const { user } = res.data;
             setData({ user: userJson, token, admin: !!user.admin });
-            return 
+            return
         } catch (error) {
             if (error.response) {
                 alert(error.response.data.message);
@@ -91,9 +90,9 @@ function AuthProvider({ children }) {
         const user = localStorage.getItem("@foodExplorer:user");
 
         if (token && user) {
-            api.defaults.headers.authorization = `Bearer ${token}`;            
+            api.defaults.headers.authorization = `Bearer ${token}`;
             const userJson = JSON.parse(user);
-            isAdmin({userJson, token});
+            isAdmin({ userJson, token });
         }
     }, []);
 

@@ -1,9 +1,8 @@
-import styled from 'styled-components'
-
+import styled from 'styled-components';
 
 export const Container = styled.div`
     width: clamp(280px, 100%, 320px);
-    min-height: 510px;
+    min-height: 550px;
     background-color: ${({ theme }) => theme.COLORS.BACKGROUND_0a};
 
     display: flex;
@@ -102,6 +101,4 @@ export const Container = styled.div`
             width: 80px;
         }
     }
-
-
 `;

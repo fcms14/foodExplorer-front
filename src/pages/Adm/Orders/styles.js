@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled from 'styled-components';
 
 export const Hero = styled.div`
     margin: 0 auto;
@@ -19,7 +19,6 @@ export const Hero = styled.div`
     >h1{
         width: 100%;
     }
-
 
     > table{
         width: 100%;
@@ -59,5 +58,4 @@ export const Hero = styled.div`
     .Enviado {
         border-left: 4px solid green;
     }
-
 `;
