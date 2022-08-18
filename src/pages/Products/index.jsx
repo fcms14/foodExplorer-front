@@ -71,7 +71,7 @@ export function Products() {
                     </h1>
                     :
                     <Banner>
-                        <img src={macaroons} />
+                        <img src={macaroons} alt="Imagem de Deliciosos Macarons e frutas vermelhas"/>
                         <div>
                             <h1> Sabores inigualáveis </h1>
                             <p> Sinta o cuidado do preparo com ingredientes selecionados </p>
