@@ -43,6 +43,7 @@ export function CreateProduct() {
             setTags(prevState => [...prevState, ingredient.name]);
         };
     }
+    
     if (id && product.length == 0) {
         fetchProducts();
     }
@@ -59,24 +60,12 @@ export function CreateProduct() {
     }
 
     async function handleNewProduct() {
-        if (!name || name == "") {
-            return alert("Digite um título")
-        }
-        if (!price || price == "") {
-            return alert("Digite a nota")
-        }
-        if (Number(price) < 0) {
-            return alert("Digite uma valor acima de 0")
-        }
-        if (!description || description == "") {
-            return alert("Digite a descrição")
-        }
-        if (!tags || tags == "") {
-            return alert("Digite a(s) tag(s)")
-        }
-        if (newTag) {
-            return alert("Há um Marcador pendente para adicionar")
-        }
+        if (!name || name == "")                {return alert("Digite um título")}
+        if (!price || price == "")              {return alert("Digite a nota")}
+        if (Number(price) < 0)                  {return alert("Digite uma valor acima de 0")}
+        if (!description || description == "")  {return alert("Digite a descrição")}
+        if (!tags || tags == "")                {return alert("Digite a(s) tag(s)")}
+        if (newTag)                             {return alert("Há um Marcador pendente para adicionar")}
 
         const { data: product_id } = await api.post("/products", {
             name,
@@ -85,7 +74,6 @@ export function CreateProduct() {
             groupProduct,
             tags
         });
-
 
         if (avatarFile) {
             const fileUploadForm = new FormData();
@@ -99,9 +87,7 @@ export function CreateProduct() {
     }
 
     async function handleUpdateProduct() {
-        if (newTag) {
-            return alert("Há um Marcador pendente para adicionar")
-        }
+        if (newTag) {return alert("Há um Marcador pendente para adicionar")}
 
         await api.post(`/products/update/`, {
             name,
@@ -128,15 +114,10 @@ export function CreateProduct() {
         <>
             <Header />
             <Hero>
-
                 <Link to='/'>
                     <FiArrowLeft />
                 </Link>
-
-                <h1>
-                    Cadastrar Produto
-                </h1>
-
+                <h1>Cadastrar Produto</h1>
                 <Section2Columns>
                     <Column2>
                         Imagem do Produto

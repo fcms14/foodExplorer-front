@@ -133,8 +133,8 @@ export function MyCart() {
 
                     <Checkout>
                         <h1> Pagamento </h1>
-
                         <div className='wrapper'>
+
                             { !aproved.length  ?
                                 <div className='collumns'>
                                     <div id="pix" className={pix ? "paymentMethod displayBackground" : "paymentMethod"} onClick={(event) => toggleClass(event, setPix)}> Pix </div>
@@ -148,6 +148,7 @@ export function MyCart() {
                             <div className={pix ? "paymentOption" : "paymentOption displayNone"}>
                                 <img src={qrCode} />
                             </div>
+
                             <div className={card ? "paymentOption" : "paymentOption displayNone"}>
                                 <Input
                                     title="Número do Cartão"
@@ -169,9 +170,8 @@ export function MyCart() {
                                         maxLength="4"
                                     />
                                 </Section2Columns>
-
-
                             </div>
+
                             <div className={cash ? "paymentOption" : "paymentOption displayNone"}>
                                 <Input
                                     title="Troco para"
@@ -183,12 +183,12 @@ export function MyCart() {
 
                             <div className={aproved != "" ? "paymentOption" : "paymentOption displayNone"}>
                                 Pedido aprovado: {aproved} 
-                                <br /> > {status} 
+                                <br /> &gt; {status} 
                             </div>
 
                             <div className={aproved != "" ? "paymentOption displayNone" : "paymentOption"}>
                                 <Button title="Finalizar Pagamento" onClick={handleNewOrder} />
-                            </div>
+                            </div>                            
                         </div>
                     </Checkout>
                 </div>

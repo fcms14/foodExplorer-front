@@ -13,9 +13,8 @@ export function ProductCard({ data, isEqual, isFavorited }) {
     const navigate = useNavigate();
     const avatarUrl = data.picture ? `${api.defaults.baseURL}/files/${data.picture}` : avatarPlaceHolder;
     const pendingOrder = JSON.parse(localStorage.getItem(`@foodExplorer:order${user.id}`)) || [];
-
-    let [quantity, setQuantity] = useState(1);
-    let [favorited, setFavorited] = useState(isFavorited);
+    const [quantity, setQuantity] = useState(1);
+    const [favorited, setFavorited] = useState(isFavorited);
 
     async function handleRemove() {
         const confirm = window.confirm("Deseja realmente excluir este filme?");
