@@ -19,6 +19,8 @@ export function Products() {
     const [products, setProducts] = useState([]);
     const [favorites, setFavorites] = useState([]);
     const [showFavs, setShowFavs] = useState(false);
+    const cardsPerRow = Math.min(3, Math.floor((Math.min(1360, window.innerWidth))/360));
+    const cardsShow = cardsPerRow * 1.1;
     let lastGroup = "";
     let isEqual = false;
 
@@ -32,7 +34,7 @@ export function Products() {
             setFavorites(productsFavoriteds);
         }
         fetchProducts();
-    }, [favorites]);
+    }, []);
 
     let filteredProducts = showFavs ? products.filter(product => (favorites.includes(product.id))) : products;
     filteredProducts = search.length > 0 ? products.filter(product => product.name.toLowerCase().includes(search.toLowerCase())) : filteredProducts;
@@ -85,7 +87,7 @@ export function Products() {
                         return (
                             <>
                                 <h1> {group} </h1>
-                                <Carousel show={3.5} slide={3} transition={0.75} swiping={true} key={keyS} useArrowKeys={true} responsive={true} a11y={true} dynamic={true} rightArrow={true} leftArrow={true}>
+                                <Carousel show={cardsShow} slide={cardsPerRow} transition={0.75} swiping={true} key={keyS} useArrowKeys={true} responsive={true} a11y={true} dynamic={true} rightArrow={true} leftArrow={true}>
                                     {
                                         carouselProducts.map(carouselProduct => (
                                             <ProductCard
