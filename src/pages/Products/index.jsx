@@ -3,7 +3,7 @@ import { useAuth } from '../../hooks/auth';
 import { api } from '../../services/api';
 import { Link } from 'react-router-dom';
 
-import { FiSearch } from 'react-icons/fi';
+import { FiSearch, FiChevronLeft, FiChevronRight } from 'react-icons/fi';
 import { Hero, Banner } from "./styles";
 import { Favorites, Search } from '../../components/Header/styles';
 import { Header } from "../../components/Header";
@@ -87,7 +87,7 @@ export function Products() {
                         return (
                             <>
                                 <h1> {group} </h1>
-                                <Carousel show={cardsShow} slide={cardsPerRow} transition={0.75} swiping={true} key={keyS} useArrowKeys={true} responsive={true} a11y={true} dynamic={true} rightArrow={true} leftArrow={true}>
+                                <Carousel className="carousel" show={cardsShow} slide={cardsPerRow} transition={0.75} swiping={true} key={keyS} useArrowKeys={true} responsive={true} a11y={true} dynamic={true} leftArrow={<FiChevronLeft size={36} />} rightArrow={<FiChevronRight size={36} />} >
                                     {
                                         carouselProducts.map(carouselProduct => (
                                             <ProductCard

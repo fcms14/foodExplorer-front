@@ -16,6 +16,10 @@ export const Hero = styled.div`
     gap: 20px;
     color: ${({ theme }) => theme.COLORS.GRAY_C4};
 
+    .carousel{
+        align-items: center;
+    }
+
     >h1{
         width: 100%;
     }
